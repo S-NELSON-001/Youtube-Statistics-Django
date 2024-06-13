@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%  load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Channel Stats</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <style>
+        body {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0;
+    background:linear-gradient(rgb(241, 249, 175),white);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 50px auto;
+    text-align: center;
+    background-color: #f0caca;
+    border-radius: 8px;
+    border: 3px solid black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: space-around;
+}
+.container .div1{
+    margin: 2%;
+    height: 70px;
+    display: flex;
+    border: 3px solid black;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+.container .div2{
+    margin: 2%;
+    width: 95%;
+    height: 400px;
+    display: flex;
+}
+h2 {
+    color: #111111;
+}
+
+p {
+    color: #666;
+}
+.heading{
+    display: flex;
+    flex-basis: 100%;
+    font-size: 20px;
+    justify-content: end;
+    align-items: flex-start;
+}
+h3{
+    color: #080505;
+}
+.div2_1{
+   
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-items: flex-start;
+}
+.div2_2{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 20px;
+}
+.summary{
+    display: flex;
+    width: 100%;
+    height: 150px;
+    border-radius: 20px;
+}
+.stat{
+    width: 100%;
+    height: 300px;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: auto;
+    align-items: center;
+}
+.yimg{
+    display: flex;
+    border-radius: 20px;
+    width: 30%;
+    align-items: start;
+}
+.details{
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+}
+.details div{
+    width: 100%;
+    height: 27px;
+}
+span{
+    font-size: 15px;
+    color: rgb(84, 79, 79);
+}
+.th1{
+    padding-bottom: 20px;
+    padding-right: 14px;
+}
+.td1{
+    padding-right: 10px;
+}
+.td2{
+    padding-right: 30px;
+}
+.head{
+    font-size: xxx-large;
+    color: rgb(255, 0, 0);
+}
+.heading div h2{
+    text-shadow: 0px 2px 14px ;
+}
+a{
+    text-decoration: none;
+    color: #080505;
+}
+.ch{
+    font-size: larger;
+    border:2px solid red;
+    background-color: rgb(253, 41, 4);
+    border-radius: 20px;
+}
+.ch a{
+    color: whitesmoke;
+}
+.ch:hover{
+    transition: 1s;
+    transform: scale(0.9);
+    box-shadow: 10px 3px 10px red;
+}
+.ytsub{
+    border: 1px solid;
+    height: 85px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+}
+.border{
+    border: 2px solid;
+}
+
+@media only screen and (max-width:600px){
+    .container{
+        width:90%
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="div1">
+            <div ><img src="{% static 'images/BYM.png' %}" width="40%" style="padding-right: 70px;"> </div>
+            <div class="heading">
+                <div>
+                    <h2><span class="head">B</span>lessing <span class="head">Y</span>outh <span class="head">M</span>ission</h2>
+                </div>
+            </div>
+        </div>
+        <div class="div2">
+            <div class="div2_1">
+             <canvas id="myChart" style="width: 10%;height: 30px;"></canvas>             </div>
+            <div class="div2_2">
+                <div class="summary">
+                    <div class="yimg">
+                        <img src="{% static 'images/yt.jpg' %}" alt="" width="80%" style="border-radius: 50px;">
+                    </div>
+                    <div class="details">
+                        <table>
+                            <tr>
+                                <th class="th1">Name:</th>
+                                <td class="td1">Blessing youth mission official</td>
+                            </tr>
+                            <tr>
+                                <th>Website:</th>
+                                <td><a href="https://www.bymonline.org/#/">www.bymonline.org</a></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="ch"><a href="https://www.youtube.com/c/blessingyouthmissionofficial">View_Channel</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="stat">
+                   <div style="margin-left: 30%;border: 2px solid;display: flex;flex-direction: column; border-radius: 25px;width: 70%;">
+                        <div><img src="{% static 'images/followers-icon-png-1.jpg' %}" width="40px"></div>
+                        <div style="font-weight: bolder;">Subscribers</div>
+                        <div style="font-weight: bold;">{{sub}}</div>
+                   </div>
+                   <div style="margin-left: 30%;border: 2px solid;display: flex;flex-direction: column;border-radius: 25px;width: 70%;">
+                        <div><img src="{% static 'images/view.jpg' %}" width="40px"></div>
+                        <div style="font-weight: bolder;">Views</div>
+                        <div style="font-weight: bold;">{{view}}</div>
+                   </div>
+                   <div style="margin-left: 30%;border: 2px solid;display: flex;flex-direction: column;border-radius: 25px;width: 70%;">
+                     <div><img src="{% static 'images/upload.png' %}" width="40px"></div>
+                     <div style="font-weight: bolder;">Uploads</div>
+                     <div style="font-weight: bold;">{{vdio}}</div>
+                   </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const xValues = ["Total.no.subscribers", "Total.no.views", "Total.no.video"];
+        const yValues = [{{sub}}, {{view}}, {{vdio}}];
+        const barColors = [
+          "#b91d47",
+          "#00aba9",
+          "#2b5797"
+        ];
+        new Chart("myChart", {
+          type: "pie",
+          data: {
+            labels: xValues,
+            datasets: [{
+              backgroundColor: barColors,
+              data: yValues
+            }]
+          },
+          options: {
+            title: {
+              display: true,
+              text: "BYM-Youtube Statistics"
+            }
+          }
+        });
+        </script>
+</body>
+</html>
