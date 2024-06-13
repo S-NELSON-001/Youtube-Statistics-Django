@@ -1,7 +1,3 @@
-Here's a README for your GitHub project:
-
----
-
 # YouTube Channel Stats - Django Application
 
 This project provides a web-based interface to view key statistics for a specified YouTube channel. It displays information such as the number of subscribers, total views, and video uploads.
@@ -17,7 +13,7 @@ This project provides a web-based interface to view key statistics for a specifi
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/youtube-channel-stats.git
+   git clone https://github.com/S-NELSON-001/Youtube-Statistics-Django.git
    ```
 2. Navigate to the project directory:
    ```bash
