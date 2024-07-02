@@ -3,7 +3,7 @@ import urllib.request
 import json
 # Create your views here.
 def show(request):
-    url=urllib.request.urlopen("https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UCcxZNL3o00nZeKV4E16I-mA&key=AIzaSyBzadJbQgAbZck3R149IGymMQyu-gXDc1k").read()
+    url=urllib.request.urlopen("https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UCcxZNL3o00nZeKV4E16I-mA&key=").read()
     data_sub=json.loads(url)['items'][0]['statistics']["subscriberCount"]
     data_view = json.loads(url)['items'][0]['statistics']["viewCount"]
     data_video = json.loads(url)['items'][0]['statistics']["videoCount"]
